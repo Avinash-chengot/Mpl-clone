@@ -1,0 +1,144 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: 'Alumni Sans', sans-serif;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 40%;
+            margin: auto;
+            border: 1px solid gray;
+            padding: 2%;
+        }
+
+        form input {
+            border: none;
+            background-color: wheat;
+            padding: 2%;
+            margin-bottom: 5px;
+            margin-top: 5px;
+        }
+
+        img {
+            margin: auto;
+
+        }
+
+        form label {
+            font-weight: bold;
+            padding: 2%;
+        }
+
+        .sign {
+            color: chocolate;
+        }
+
+        .flexbtndiv {
+            width: 90%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .forwid1{
+            width: 100%;
+            text-align: center;
+            background-color: greenyellow;
+            color: white;
+            padding: 4%;
+            font-size: 17px;
+        }
+        .forwid2{
+            width: 100%;
+            text-align: center;
+            background-color: black;
+            color: white;
+            padding: 4%;
+            font-size: 17px;
+        }
+        @media only screen and (max-width:500px) {
+            form{
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <form onsubmit="submitform(event)">
+        <img src="https://www.mpl.live/static/hamburger/mpl-logo.png" alt="">
+        <label for="username">Username</label>
+        <input placeholder="Enter Username" type="text" name="" id="Username">
+        <label for="password">Password</label>
+        <input type="password" name="" id="Password" placeholder="Enter Password">
+        <div class="flexbtndiv">
+            <div id="btndivv"><input class="forwid1" type="submit" value="login">
+            </div>
+            <div id="btndiv"><input class="forwid2" onclick="signup()" value="signup">
+            </div>
+
+    </form>
+</body>
+
+</html>
+<script>
+
+    function submitform(e) {
+        e.preventDefault()
+
+        var username = document.getElementById('Username').value;
+        var password = document.getElementById('Password').value;
+        s(username, password);
+    }
+    let login_DETAILS = JSON.parse(localStorage.getItem("myAdress:"));
+    console.log(login_DETAILS)
+
+
+
+    function s(p, a) {
+        var x = user(p, a);
+
+
+
+        if (x == true) {
+            myFunction();
+            alert("Successfully logged in redirecting to home page");
+
+
+        } else {
+            alert("UserName and Password does not match");
+        }
+    }
+
+    function user(p, a) {
+        return login_DETAILS.some(function (el) {
+            if (el.username === p && el.password === a) {
+                return true;
+            };
+        });
+    }
+
+    function myFunction() {
+        window.location.href = "finalpage.html";
+    }
+    function signup() {
+        window.location.href = "signup.html";
+    }
+</script>
+</body>
+
+</html>
+
+  
